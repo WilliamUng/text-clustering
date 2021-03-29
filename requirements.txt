@@ -1,0 +1,7 @@
+streamlit
+umap-learn
+pandas
+altair
+numpy
+tensorflow_hub
+hdbscan
