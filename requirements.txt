@@ -1,7 +1,7 @@
 streamlit
-umap-learn
-pandas
 altair
-numpy==1.20
-tensorflow_hub
 tensorflow
+tensorflow_hub
+umap-learn
+hdbscan
+numpy==1.20.0
