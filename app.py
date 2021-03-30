@@ -20,14 +20,7 @@ def get_USE_embedding_model():
 
     return USE_embed
 
-@st.cache(allow_output_mutation=True)
-def compute_sentence_embeddings(text):
-    embeddings = USE_embed(text)['outputs'].numpy()
-    return embeddings
-
 USE_embed = get_USE_embedding_model()
-
-df_csv = pd.read_csv('train.csv')
 
 toy_data = [
     ["My flight got cancelled and I didn't get a refund.", "travel"],
@@ -57,9 +50,8 @@ toy_data = [
     ["Next time I go to the beach, I will definitely try to surf", "activities"]
 ]
 
-#df = pd.DataFrame(toy_data, columns = ['review','category'])
-df = pd.DataFrame(list(zip(df_csv['tweet'])), columns=['review'])
-train_embeddings = compute_sentence_embeddings(df.review[:500])
+df = pd.DataFrame(toy_data, columns = ['review','category'])
+train_embeddings = USE_embed(df.review[:500])['outputs'].numpy()
 
 col_umap, col_hdbscan = st.beta_columns(2)
 st.title('')
